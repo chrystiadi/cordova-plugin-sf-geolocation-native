@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-sf-geolocation-native",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cordova SF Geolocation Plugin",
   "cordova": {
     "id": "cordova-plugin-sf-geolocation-native",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://10.1.35.35:8484/backoffice/mobile/cordova-plugin-sf-geolocation-native.git"
+    "url": "https://github.com/chrystiadi/cordova-plugin-sf-geolocation-native.git"
   },
   "keywords": [
     "cordova",
