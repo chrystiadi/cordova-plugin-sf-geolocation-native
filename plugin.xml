@@ -12,11 +12,11 @@
     <description>Cordova SF Geolocation Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,geolocation</keywords>
-    <repo>http://10.1.35.35:8484/backoffice/mobile/cordova-plugin-sf-geolocation-native.git</repo>
+    <repo>https://github.com/chrystiadi/cordova-plugin-sf-geolocation-native.git</repo>
     <issue>https://issues.apache.org/jira/browse/CB/component/12320648</issue>
 
     <js-module src="www/sfgeolocationnative.js" name="sfgeolocationnative">
-        <clobbers target="sfgeolocationnative" />
+        <clobbers target="window.plugins.sfgeolocationnative" />
     </js-module>
 
     <!-- android -->
