@@ -121,25 +121,25 @@ public class SFGeolocationNative extends CordovaPlugin {
 			} else {
 				if (isGPSEnabled) {
 					mLocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListenerGPS);
-					
-					if (mLocManager != null) {
-						Location gpsLoc = mLocManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+					LocationManager locManagerGPS = mLocManager;
+					if (locManagerGPS != null) {
+						Location gpsLoc = locManagerGPS.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
 						if (gpsLoc != null) {
 							updateLocation(gpsLoc, callbackContext);
+						} else {
+							if (isNetworkEnabled) {
+								mLocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0,
+											locationListenerNetwork);
+								LocationManager locManagerNetwork = mLocManager;
+								if (locManagerNetwork != null) {
+									Location networkLoc = locManagerNetwork.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+									updateLocation(networkLoc, callbackContext);
+								}
+							}
 						}
 					}
 
-				}
-
-				if (isNetworkEnabled) {
-					mLocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0,
-								locationListenerNetwork);
-					
-					if (mLocManager != null) {
-						Location networkLoc = mLocManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-						updateLocation(networkLoc, callbackContext);
-					}
 				}
 			}
 
