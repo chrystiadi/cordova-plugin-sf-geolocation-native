@@ -193,5 +193,6 @@ public class SFGeolocationNative extends CordovaPlugin {
 			e.printStackTrace();
 			callbackContext.error(e.toString());
 		}
+		
 	}
 }
