@@ -27,6 +27,13 @@
             </feature>
         </config-file>
 
+        <framework src="com.google.android.gms:play-services-location:9.8.0" />
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        </config-file>
+
         <source-file src="src/android/SFGeolocationNative.java" target-dir="com/smartfren/cordova/sfgeolocationnative" />
     </platform>
 
