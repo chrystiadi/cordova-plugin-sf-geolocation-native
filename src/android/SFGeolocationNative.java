@@ -42,10 +42,10 @@ public class SFGeolocationNative extends CordovaPlugin {
 					.getSystemService(Context.LOCATION_SERVICE);
 
 			// getting GPS status
-			isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+			isGPSEnabled = mLocManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
 			// getting network status
-			isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+			isNetworkEnabled = mLocManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
 			if (!isGPSEnabled && !isNetworkEnabled) {
 				// no network provider is enabled
@@ -56,18 +56,16 @@ public class SFGeolocationNative extends CordovaPlugin {
 					Location loc = null;
 					if (isGPSEnabled) {
 						mLocManager.requestLocationUpdates(LOCATION_PROVIDER, 1000L, 500.0f, locationListener);
-						LocationManager locationmanager = mLocManager;
-
-						if (locationmanager != null) {
+						
+						if (mLocManager != null) {
 							loc = mLocManager.getLastKnownLocation("gps");
 
 							if (loc == null) {
 								if (isNetworkEnabled) {
 									mLocManager.requestLocationUpdates("network", 1000L, 0.0F,
 												this);
-									LocationManager locationmanager = mLocManager;
-
-									if (locationmanager != null) {
+									
+									if (mLocManager != null) {
 										loc = mLocManager.getLastKnownLocation("network");
 									}
 								}
@@ -166,7 +164,7 @@ public class SFGeolocationNative extends CordovaPlugin {
 				listenerON = true;
 
 				// Register the listener with the Location Manager to receive location updates
-				locationManager.requestLocationUpdates(LOCATION_PROVIDER, 1000L, 500.0f, locationListener);
+				mLocManager.requestLocationUpdates(LOCATION_PROVIDER, 1000L, 500.0f, locationListener);
 				return true;
 			} else {
 				PluginResult result = new PluginResult(PluginResult.Status.NO_RESULT);
