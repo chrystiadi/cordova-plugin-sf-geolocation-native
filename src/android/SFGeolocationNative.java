@@ -119,7 +119,7 @@ public class SFGeolocationNative extends CordovaPlugin {
 							if (loc == null) {
 								if (isNetworkEnabled) {
 									mLocManager.requestLocationUpdates("network", 1000L, 0.0F,
-												this);
+												locationListener);
 									
 									if (mLocManager != null) {
 										loc = mLocManager.getLastKnownLocation("network");
